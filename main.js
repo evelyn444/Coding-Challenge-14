@@ -13,11 +13,15 @@ async function displayTicket (UserId) {
         if (!ticketIdResponse.ok){
             throw new Error ('Failed to retrieve ticket data');
         }
+        //Task 3:  Display Tickets Dynamically on the Page and  Task 2 continued 
         const ticketId = await ticketIdResponse.json();
         console.log ('TickedId:', ticketId);
         orders[0].products.forEach(product => {
             const listItem = document.createElement('li');
-            listItem.textContent = `Customer Name: ${product, userid}, Issue`
-        })
+            listItem.textContent = `Customer Name: ${product, userid}, Issue Description: ${product.title}, Deatils: ${product.body}`;
+            orderList.appendChild (listItem);
+        }); 
+    } catch (error){
+        console.error ('Error:', error.message);
     }
 }
